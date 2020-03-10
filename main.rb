@@ -8,6 +8,13 @@ loop do
     break
   end
   response = RestClient.get(BASE_ADDR, { params: { q: word } })
+
+  file = 'index.html'
+
+  File.open(file, "w") do |file|
+    file.write(response)
+  end
+
   puts response.code
   puts response.headers
 end
